@@ -37,9 +37,6 @@ func main() {
 		AllowMethods: "GET, POST, PUT, DELETE, OPTIONS",
 	}))
 
-	// Static files from frontend (once built)
-	app.Static("/", "../frontend/dist")
-
 	api := app.Group("/api")
 
 	// Public routes
@@ -76,7 +73,7 @@ func main() {
 	fmt.Print("\033[H\033[2J") // Clear Screen
 	fmt.Println("\033[1;37m PM2 Dashboard\033[0m")
 	fmt.Println("\033[1;34m ┌ Process List ──────────────────────────┐ ┌ redcode-api Logs ──────────────────────────────────────────┐\033[0m")
-	fmt.Printf("\033[1;34m │\033[0m [ 0 ] \033[1;37mredcode-api\033[0m     Mem: \033[1;32m%-5d\033[0m MB \033[1;34m│ │\033[0m \033[1;32mredcode-api > \033[0mStarting server on port :80...             \033[1;34m│\033[0m\n", m.Alloc/1024/1024)
+	fmt.Printf("\033[1;34m │\033[0m [ 0 ] \033[1;37mredcode-api\033[0m     Mem: \033[1;32m%-5d\033[0m MB \033[1;34m│ │\033[0m \033[1;32mredcode-api > \033[0mStarting server on port :8080...           \033[1;34m│\033[0m\n", m.Alloc/1024/1024)
 	fmt.Printf("\033[1;34m │\033[0m [ 1 ] \033[1;34mdb-sync\033[0m         Mem: \033[1;32m%-5d\033[0m MB \033[1;34m│ │\033[0m \033[1;32mredcode-api > \033[0mDashboard: http://159.89.198.248/          \033[1;34m│\033[0m\n", 12)
 	fmt.Println("\033[1;34m │                                        │ │                                                          │\033[0m")
 	fmt.Println("\033[1;34m │                                        │ │                                                          │\033[0m")
@@ -91,7 +88,7 @@ func main() {
 	fmt.Println("\033[1;37m left/right: switch boards | up/down/mouse: scroll | Ctrl-C: exit\033[0m")
 	fmt.Println()
 
-	log.Fatal(app.Listen("0.0.0.0:80"))
+	log.Fatal(app.Listen("0.0.0.0:8080"))
 }
 
 func checkBotStatus() {
