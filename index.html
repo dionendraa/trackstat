@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedCode Roblox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page" class="page active">
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">RedCode</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" onclick="showPage('login-page')">Login</a>
+                <a href="#" class="btn-primary" onclick="showPage('register-page')">Register</a>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Track Your Roblox Stats</h1>
+                <p>Monitor your Roblox game statistics, player data, and bot performance in real-time with our powerful tracking platform.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="showPage('register-page')">Get Started</button>
+                    <button class="btn-secondary" onclick="showPage('login-page')">Sign In</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="stats-card">
+                    <div class="stat-item">
+                        <span class="stat-number" id="landing-total-users">0</span>
+                        <span class="stat-label">Total Users</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="landing-total-bots">0</span>
+                        <span class="stat-label">Total Bots</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="landing-total-coins">0</span>
+                        <span class="stat-label">Coins Collected</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/><path d="M12 8v3"/></svg></div>
+                    <h3>Bot Management</h3>
+                    <p>Control and monitor your Roblox bots with ease</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/></svg></div>
+                    <h3>Real-time Analytics</h3>
+                    <p>Track player statistics and game performance</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4m0 14v4m11-11h-4M5 12H1m16.36-5.64l-2.83 2.83M8.46 15.54l-2.83 2.83m11.74 0l-2.83-2.83M8.46 8.46L5.64 5.64"/></svg></div>
+                    <h3>Custom Settings</h3>
+                    <p>Configure tracking preferences to your needs</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2024 RedCode Roblox. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login-page" class="page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="auth-logo">RedCode</div>
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to your account</p>
+                </div>
+                <form id="login-form" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Sign In</button>
+                </form>
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" onclick="showPage('register-page')">Register</a></p>
+                    <a href="#" onclick="showPage('landing-page')">← Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Page -->
+    <div id="register-page" class="page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="auth-logo">RedCode</div>
+                    <h2>Create Account</h2>
+                    <p>Start tracking your Roblox stats</p>
+                </div>
+                <form id="register-form" onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="register-name">Username</label>
+                        <input type="text" id="register-name" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" placeholder="Create a password" required>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Create Account</button>
+                </form>
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#" onclick="showPage('login-page')">Sign In</a></p>
+                    <a href="#" onclick="showPage('landing-page')">← Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard-page" class="page">
+        <div class="dashboard-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <span class="sidebar-title">RedCode</span>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active" onclick="showDashboardSection('dashboard-section', this)">
+                        <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="showDashboardSection('bot-section', this)">
+                        <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/><path d="M12 8v3"/></svg></span>
+                        <span class="nav-text">Bot</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="showDashboardSection('backpack-section', this)">
+                        <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M8 8V6a4 4 0 018 0v2"/><line x1="12" y1="12" x2="12" y2="16"/></svg></span>
+                        <span class="nav-text">Backpack</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="showDashboardSection('setting-section', this)">
+                        <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4m0 14v4m11-11h-4M5 12H1m16.36-5.64l-2.83 2.83M8.46 15.54l-2.83 2.83m11.74 0l-2.83-2.83M8.46 8.46L5.64 5.64"/></svg></span>
+                        <span class="nav-text">Setting</span>
+                    </a>
+                </nav>
+                <div class="sidebar-footer">
+                    <a href="#" class="nav-item logout" onclick="handleLogout()">
+                        <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>
+                        <span class="nav-text">Logout</span>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="dashboard-main">
+                <header class="dashboard-header">
+                    <h1 id="section-title">Dashboard</h1>
+                    <div class="user-info">
+                        <span id="user-name">User</span>
+                        <div class="avatar">U</div>
+                    </div>
+                </header>
+
+                <!-- Dashboard Section -->
+                <section id="dashboard-section" class="dashboard-content active">
+                    <div class="stats-overview">
+                        <div class="stat-card">
+                            <div class="stat-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+                            <div class="stat-info">
+                                <h3>Total Bots</h3>
+                                <p class="stat-value" id="stat-total-bots">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card online">
+                            <div class="stat-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div>
+                            <div class="stat-info">
+                                <h3>Online Bots</h3>
+                                <p class="stat-value" id="stat-online-bots">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card offline">
+                            <div class="stat-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2M9 9h.01M15 9h.01"/></svg></div>
+                            <div class="stat-info">
+                                <h3>Offline Bots</h3>
+                                <p class="stat-value" id="stat-offline-bots">0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-charts">
+                        <div class="chart-card full-width">
+                            <div class="chart-header">
+                                <h3>Bot Statistics</h3>
+                                <span class="chart-update-time" id="chart-update-time">Last updated: --</span>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="bot-stats-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bot-summary-table">
+                        <div class="chart-card">
+                            <h3>Bot Summary</h3>
+                            <table class="summary-table">
+                                <thead>
+                                    <tr>
+                                        <th>Bot Name</th>
+                                        <th>Status</th>
+                                        <th>Coins</th>
+                                        <th>Fish Caught</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dashboard-bot-summary">
+                                    <tr>
+                                        <td colspan="4" style="text-align: center; color: var(--text-muted);">Loading...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bot Section -->
+                <section id="bot-section" class="dashboard-content">
+                    <div class="section-header">
+                        <h2>Bot Management</h2>
+                        <button class="btn-primary" onclick="showAddBotModal()">+ Add Bot</button>
+                    </div>
+                    
+                    <div class="bot-stats-row">
+                        <div class="bot-stat-box online-total-box">
+                            <span class="bot-stat-label">Online / Total</span>
+                            <span class="bot-stat-value"><span id="bot-online-count">0</span> / <span id="bot-total-count">0</span></span>
+                        </div>
+                        <div class="bot-stat-box secret-box">
+                            <span class="bot-stat-label">Secret</span>
+                            <span class="bot-stat-value" id="bot-secret-count">0</span>
+                        </div>
+                        <div class="bot-stat-box mythic-box">
+                            <span class="bot-stat-label">Mythic</span>
+                            <span class="bot-stat-value" id="bot-mythic-count">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bot-table-container">
+                        <table class="bot-table">
+                            <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>STATUS</th>
+                                    <th>NAME</th>
+                                    <th>COIN</th>
+                                    <th>FISH CAUGHT</th>
+                                    <th>RAREST FISH</th>
+                                    <th>BACKPACK</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bot-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Backpack Section -->
+                <section id="backpack-section" class="dashboard-content">
+                    <div class="section-header">
+                        <h2>Backpack Inventory</h2>
+                        <div class="backpack-stats">
+                            <span id="backpack-total-items">Total Items: 0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="backpack-filter">
+                        <div class="category-buttons">
+                            <button class="category-btn active" data-category="fish" onclick="filterByCategory('fish', this)">🐟 Fish</button>
+                            <button class="category-btn" data-category="bait" onclick="filterByCategory('bait', this)">🎯 Bait</button>
+                            <button class="category-btn" data-category="rod" onclick="filterByCategory('rod', this)">🎣 Rod</button>
+                            <button class="category-btn" data-category="item" onclick="filterByCategory('item', this)">📦 Item</button>
+                        </div>
+                    </div>
+
+                    <div class="backpack-grid" id="backpack-grid">
+                        <div class="backpack-empty">
+                            <p>No items in backpack</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Setting Section -->
+                <section id="setting-section" class="dashboard-content">
+                    <div class="settings-container">
+                        <div class="settings-card">
+                            <h3>Profile Settings</h3>
+                            <form class="settings-form">
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input type="text" id="setting-username" placeholder="Your username">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="setting-email" placeholder="Your email">
+                                </div>
+                                <button type="button" class="btn-primary" onclick="saveSettings()">Save Changes</button>
+                            </form>
+                        </div>
+                        <div class="settings-card">
+                            <h3>Notification Settings</h3>
+                            <div class="toggle-group">
+                                <label class="toggle-label">
+                                    <span>Email Notifications</span>
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-switch"></span>
+                                </label>
+                                <label class="toggle-label">
+                                    <span>Bot Alerts</span>
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-switch"></span>
+                                </label>
+                                <label class="toggle-label">
+                                    <span>Weekly Reports</span>
+                                    <input type="checkbox">
+                                    <span class="toggle-switch"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="settings-card">
+                            <h3>API Settings</h3>
+                            <div class="form-group">
+                                <label>API Key</label>
+                                <div class="api-key-container">
+                                    <input type="password" id="api-key" value="xxxxxxxxxxxxxxxx" readonly>
+                                    <button type="button" class="btn-small btn-secondary" onclick="toggleApiKey()">Show</button>
+                                    <button type="button" class="btn-small btn-primary" onclick="regenerateApiKey()">Regenerate</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="settings-card danger-zone">
+                            <h3>Danger Zone</h3>
+                            <p>Once you delete your account, there is no going back.</p>
+                            <button type="button" class="btn-danger">Delete Account</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Add Bot Modal -->
+    <div id="add-bot-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Bot</h3>
+                <button class="modal-close" onclick="closeAddBotModal()">&times;</button>
+            </div>
+            <form onsubmit="handleAddBot(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="add-bot-username" placeholder="Enter username" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeAddBotModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Add Bot</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js?v=2"></script>
+</body>
+</html>
