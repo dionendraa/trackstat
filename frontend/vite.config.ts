@@ -6,11 +6,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
-    port: 5173,
-    allowedHosts: ['redcodes.my.id'],
+    port: 80,
+    allowedHosts: ['redcodes.my.id', '159.89.198.248'],
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:80', 
+        target: 'http://127.0.0.1:8080', 
         changeOrigin: true,
       },
     },

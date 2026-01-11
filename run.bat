@@ -4,18 +4,10 @@ echo    REDCODE SYSTEM - STARTUP SCRIPT
 echo ==========================================
 echo.
 
-echo [1/2] Building Frontend...
-cd frontend
-call npm run build
-if %errorlevel% neq 0 (
-    echo Error building frontend!
-    pause
-    exit /b %errorlevel%
-)
-cd ..
+echo [1/2] Starting Frontend (Port 80)...
+start /b cmd /c "cd frontend && npm run dev"
 
-echo.
-echo [2/2] Starting Go Backend...
+echo [2/2] Starting Go Backend (Port 8080)...
 cd backend
 go run main.go
 if %errorlevel% neq 0 (
